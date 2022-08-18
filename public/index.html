@@ -30,8 +30,10 @@
             // Google Token : ID_TOKEN
             //console.log(response.credential);
             const body = JSON.stringify({ id_token: response.credential})
-
-            fetch(`${location.host}/api/auth/google`,{
+            const url = (location.host == 'localhost:8080') ? 
+                        'http://localhost:8080' :
+                        'https://node-curso-f.herokuapp.com'
+            fetch(`${url}/api/auth/google`,{
                 method: 'POST',
                 headers: {
                     'Content-Type':'application/json'
